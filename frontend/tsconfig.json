@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", // 브라우저에서 사용할 JavaScript 기준 버전
+    "lib": ["ES2022", "DOM", "DOM.Iterable"], // 최신 JS와 브라우저 기능의 타입 사용
+    "useDefineForClassFields": true, // 클래스 필드가 표준 방식으로 동작하게 설정
+
+    "module": "ESNext", // import/export 모듈 문법 사용
+    "moduleResolution": "bundler", // Vite 같은 번들러 방식으로 import 경로 해석
+    "jsx": "react-jsx", // React JSX 문법 사용
+
+    "strict": true, // 엄격한 타입 검사 활성화
+    "noUnusedLocals": true, // 사용하지 않는 변수 등을 오류로 표시
+    "noUnusedParameters": true, // 사용하지 않는 함수 매개변수를 오류로 표시
+    "noFallthroughCasesInSwitch": true, // switch에서 다음 case로 실수로 넘어가는 것 방지
+    "forceConsistentCasingInFileNames": true, // 파일명 대소문자 표기 불일치 방지
+
+    "isolatedModules": true, // Vite의 파일 단위 변환과 맞지 않는 문법을 확인
+    "skipLibCheck": true, // 외부 라이브러리 내부의 타입 검사는 생략
+    "noEmit": true // TypeScript가 JS 파일을 만들지 않음. 변환은 Vite가 담당
+  },
+  "include": ["src"] // 검사 대상 폴더
+}

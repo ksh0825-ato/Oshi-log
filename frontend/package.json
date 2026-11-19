@@ -1,0 +1,23 @@
+{
+  "name": "oshi-log",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "typecheck": "tsc --noEmit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksh0825-ato/Oshi-log.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ksh0825-ato/Oshi-log/issues"
+  },
+  "homepage": "https://github.com/ksh0825-ato/Oshi-log#readme",
+  "devDependencies": {
+    "typescript": "^7.0.2"
+  }
+}

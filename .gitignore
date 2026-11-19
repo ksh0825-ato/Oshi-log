@@ -1,0 +1,26 @@
+# 프론트엔드: npm 설치 파일과 빌드 결과
+node_modules/
+/frontend/dist/
+*.tsbuildinfo
+
+# 로컬 환경 변수
+.env
+.env.*
+!.env.example
+
+# 백엔드: Gradle / Maven 작업 파일
+/backend/.gradle/
+/backend/build/
+/backend/target/
+
+# Terraform: 다운로드한 모듈, 상태, 실행 계획, 변수값
+.terraform/
+*.tfstate
+*.tfstate.*
+*.tfplan
+*.tfvars
+*.tfvars.json
+
+# OS가 생성하는 파일
+.DS_Store
+Thumbs.db
