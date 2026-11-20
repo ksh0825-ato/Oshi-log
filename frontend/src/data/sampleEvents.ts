@@ -1,6 +1,6 @@
 import type { OshiEvent } from "../types/oshiEvent";
 
-const sampleEvents: OshiEvent[] = [
+export const sampleEvents: OshiEvent[] = [
     {
         id: 1,
         oshiId: 1,
