@@ -5,17 +5,14 @@ import { filterOshisByType } from "./utils/oshiList";
 import type { OshiType, Oshi } from "./types/oshi";
 
 function App() {
-  const [showVtubersOnly, setShowVtubersOnly] = useState(false);
+  const [selectedFilter, setSelectedFilter] = useState<"ALL" | OshiType>("ALL");
   const [readOshiList, setReadOshiList] = useState(sampleOshis);
   const [error, setError] = useState<string | null>(null);
 
-  let visibleOshis;
-
-  if (showVtubersOnly == false) {
-    visibleOshis = readOshiList;
-  } else {
-    visibleOshis = filterOshisByType(readOshiList, "VTUBER");
-  }
+  const visibleOshis =
+    selectedFilter === "ALL"
+      ? readOshiList
+      : filterOshisByType(readOshiList, selectedFilter);
 
   const [value, setValue] = useState("");
   const [oshiType, setOshiType] = useState<OshiType>("VTUBER");
@@ -63,15 +60,38 @@ function App() {
 
     setValue(""); // 등록 성공 후 이름 입력란 비우기
     setError(null);
-  };
+  }
+  
+  const handleDeleteOshi = (id: number) => {
+    setReadOshiList((prevList) =>
+      prevList.filter((oshi) => oshi.id !== id)
+    );
+  }
 
   return (
     <>
-    <div>
-        {visibleOshis.map((Oshi) => <OshiCard key={Oshi.id} oshi={Oshi}/>)}
-        <br></br>
-      <button onClick={() => setShowVtubersOnly(false)}>전체</button>
-      <button onClick={() => setShowVtubersOnly(true)}>VTuber</button>
+    <div className="cardComponent">
+        {readOshiList.length === 0 ? (
+          <p>등록된 최애가 없어요. 첫 최애를 등록해 보세요.</p>
+        ) : visibleOshis.length === 0 ? (
+          <p>선택한 유형에 해당하는 최애가 없어요.</p>
+        ) : (
+          visibleOshis.map((oshi) => (
+            <OshiCard
+              key={oshi.id}
+              id = {oshi.id}
+              oshi={oshi}
+              onDelete={handleDeleteOshi}
+            />
+          ))
+        )}
+      <br></br>
+      
+      <button onClick={() => setSelectedFilter("ALL")}>전체</button>
+      <button onClick={() => setSelectedFilter("VTUBER")}>VTuber</button>
+      <button onClick={() => setSelectedFilter("IDOL")}>아이돌</button>
+      <button onClick={() => setSelectedFilter("CHARACTER")}>캐릭터</button>
+      <button onClick={() => setSelectedFilter("OTHER")}>기타</button>
     </div>
     
     <br></br>
